@@ -1,0 +1,121 @@
+version: '3.8'
+
+services:
+
+  mysql-user:
+    image: mysql:8.0
+    container_name: mysql-user
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: userdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-user-data:/var/lib/mysql
+    networks:
+      - microservice-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mysql-department:
+    image: mysql:8.0
+    container_name: mysql-department
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: departmentdb
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-department-data:/var/lib/mysql
+    networks:
+      - microservice-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  service-registry:
+    build: ./service-registry
+    container_name: service-registry
+    ports:
+      - "8761:8761"
+    networks:
+      - microservice-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761"]
+      interval: 20s
+      retries: 5
+
+  user-service:
+    build: ./user
+    container_name: user-service
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-user:3306/userdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      mysql-user:
+        condition: service_healthy
+      service-registry:
+        condition: service_healthy
+    networks:
+      - microservice-network
+
+  department-service:
+    build: ./department
+    container_name: department-service
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-department:3306/departmentdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      mysql-department:
+        condition: service_healthy
+      service-registry:
+        condition: service_healthy
+    networks:
+      - microservice-network
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "9191:9191"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
+    depends_on:
+      service-registry:
+        condition: service_healthy
+    networks:
+      - microservice-network
+
+  frontend:
+    build: ./microservice-frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-gateway
+    networks:
+      - microservice-network
+
+networks:
+  microservice-network:
+    driver: bridge
+
+volumes:
+  mysql-user-data:
+  mysql-department-data:
