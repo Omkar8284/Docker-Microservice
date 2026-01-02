@@ -151,14 +151,6 @@ Department Service	http://localhost:8081
 
 (All backend requests go through API Gateway)
 
-📂 Project Structure
-├── api-gateway
-├── service-registry
-├── user
-├── department
-├── microservice-frontend
-├── docker-compose.yml
-└── README.md
 
 🎯 Key Features
 
