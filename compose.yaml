@@ -96,8 +96,9 @@ services:
 
 networks:
   microservice-network:
-    driver: bridge
+    driver: bridge 
 
 volumes:
-  mysql-common-data:
+  mysql-common-data: 
+
 
