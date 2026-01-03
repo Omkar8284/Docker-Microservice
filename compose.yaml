@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   mysql-common:
-    image: mysql:8.0
+    image: mysql:8.0 
     container_name: mysql-common
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -100,5 +100,6 @@ networks:
 
 volumes:
   mysql-common-data: 
+
 
 
