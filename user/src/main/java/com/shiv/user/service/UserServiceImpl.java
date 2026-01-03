@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
         // Call Department Service
         ResponseEntity<DepartmentDto> responseEntity = restTemplate
-                .getForEntity("http://localhost:8080/api/departments/" + user.getDepartmentId(),
+                .getForEntity("http://localhost:8082/api/departments/" + user.getDepartmentId(),
                         DepartmentDto.class);
         DepartmentDto departmentDto = responseEntity.getBody();
         System.out.println(responseEntity.getStatusCode());
