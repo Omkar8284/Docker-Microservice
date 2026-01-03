@@ -17,11 +17,8 @@ A production-ready microservices application built with Spring Boot, Spring Clou
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
 - [API Documentation](#api-documentation)
-- [Resilience Patterns](#resilience-patterns)
 - [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [Future Enhancements](#future-enhancements)
-
+  
 ## 🌟 Overview
 
 This project showcases a complete microservices ecosystem with the following key features:
@@ -296,4 +293,3 @@ curl http://localhost:9191/departments/actuator/health
 
 **Happy Coding! 🚀**
 
-If you found this project helpful, please consider giving it a ⭐️
