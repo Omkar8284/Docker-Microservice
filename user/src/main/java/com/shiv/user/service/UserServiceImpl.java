@@ -33,10 +33,17 @@ public class UserServiceImpl implements UserService {
         UserDto userDto = mapToUser(user);
 
         // Call Department Service
-        ResponseEntity<DepartmentDto> responseEntity = restTemplate
-                .getForEntity("http://localhost:8082/api/departments/" + user.getDepartmentId(),
-                        DepartmentDto.class);
+//        ResponseEntity<DepartmentDto> responseEntity = restTemplate
+//                .getForEntity("http://localhost:8082/api/departments/" + user.getDepartmentId(),
+//                        DepartmentDto.class);
+//        DepartmentDto departmentDto = responseEntity.getBody();
+        ResponseEntity<DepartmentDto> responseEntity =
+                restTemplate.getForEntity(
+                        "http://DEPARTMENT-SERVICE/api/departments/" + user.getDepartmentId(),
+                        DepartmentDto.class
+                );
         DepartmentDto departmentDto = responseEntity.getBody();
+
         System.out.println(responseEntity.getStatusCode());
 
         responseDto.setUser(userDto);
