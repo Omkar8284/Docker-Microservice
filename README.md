@@ -33,8 +33,6 @@ This project showcases a complete microservices ecosystem with the following key
 
 ## 🏗️ Architecture
 
-![Architecture Diagram](./architecture-diagram.png)
-
 ```
 ┌─────────────────┐
 │  React Frontend │
@@ -314,23 +312,19 @@ open http://localhost:3000
 3. Real-time data fetching from microservices
 4. Responsive design
 
-![Department Management UI](./docs/screenshots/frontend-departments.png)
-
 ---
 
 ### 6. MySQL Database
 
 **Database Connection Proof:**
 
-![MySQL Database](./docs/screenshots/mysql-connection.png)
+<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/4daa9b11-6a9c-474f-a1d3-d03601facd5a" />
+
 
 **Connect to MySQL Container:**
 ```bash
-docker exec -it mysql-db mysql -u root -proot
+docker exec -it mysql-db mysql -u root -p 
 ```
-
-
-![Database Tables](./docs/screenshots/database-tables.png)
 
 ---
 
