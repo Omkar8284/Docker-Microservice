@@ -153,8 +153,8 @@ Persistent data storage:
 ### 1. Eureka Service Registry Dashboard
 
 **Service Registration Proof:**
+<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/f0cde17c-c812-4d8a-83de-95112a36c1f1" />
 
-![Eureka Dashboard](./docs/screenshots/eureka-dashboard.png)
 
 **What to verify:**
 - All services (API Gateway, User Service, Department Service) are registered
@@ -174,7 +174,8 @@ open http://localhost:8761
 
 **Service Running Proof:**
 
-![User Service Health](./docs/screenshots/user-service-health.png)
+<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/7a8d5e0e-52a9-4be9-8c82-5958d5bb1a50" />
+
 
 **Docker Container Status:**
 ```bash
@@ -214,7 +215,8 @@ curl -X POST http://localhost:9191/users \
 curl http://localhost:9191/users
 ```
 
-![User Service Response](./docs/screenshots/user-service-response.png)
+<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/9260c25f-2473-4177-a399-72cf2443ff69" />
+
 
 ---
 
@@ -222,7 +224,7 @@ curl http://localhost:9191/users
 
 **Service Running Proof:**
 
-![Department Service Health](./docs/screenshots/department-service-health.png)
+<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/d09cd555-0e78-4a80-9bd8-c5be9a386b5a" />
 
 **Docker Container Status:**
 ```bash
@@ -260,7 +262,6 @@ curl -X POST http://localhost:9191/departments \
 curl http://localhost:9191/departments
 ```
 
-![Department Service Response](./docs/screenshots/department-service-response.png)
 
 ---
 
@@ -268,7 +269,8 @@ curl http://localhost:9191/departments
 
 **Gateway Routing Proof:**
 
-![API Gateway Logs](./docs/screenshots/api-gateway-logs.png)
+<img width="1160" height="221" alt="image" src="https://github.com/user-attachments/assets/e3172e83-40bf-4f7d-b72e-57220d079971" />
+
 
 **Test Gateway Routing:**
 ```bash
@@ -288,15 +290,18 @@ curl http://localhost:9191/actuator/health
 curl http://localhost:9191/actuator/gateway/routes
 ```
 
-![Gateway Routes](./docs/screenshots/gateway-routes.png)
-
 ---
 
 ### 5. React Frontend
 
 **Frontend Running Proof:**
 
-![React Frontend Homepage](./docs/screenshots/frontend-homepage.png)
+**User**
+
+<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/eb8cb082-7e07-4146-8bf5-0b62918333d9" />
+
+**Department**
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/b56c1e3c-360a-461d-b45f-3577d2cfa7c0" />
 
 **Access:**
 ```bash
@@ -309,7 +314,6 @@ open http://localhost:3000
 3. Real-time data fetching from microservices
 4. Responsive design
 
-![User Management UI](./docs/screenshots/frontend-users.png)
 ![Department Management UI](./docs/screenshots/frontend-departments.png)
 
 ---
@@ -325,38 +329,6 @@ open http://localhost:3000
 docker exec -it mysql-db mysql -u root -proot
 ```
 
-**Verify Databases:**
-```sql
-SHOW DATABASES;
-```
-
-**Expected Output:**
-```
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-| userdb             |
-| departmentdb       |
-+--------------------+
-```
-
-**Verify User Data:**
-```sql
-USE userdb;
-SHOW TABLES;
-SELECT * FROM users;
-```
-
-**Verify Department Data:**
-```sql
-USE departmentdb;
-SHOW TABLES;
-SELECT * FROM departments;
-```
 
 ![Database Tables](./docs/screenshots/database-tables.png)
 
@@ -370,18 +342,8 @@ SELECT * FROM departments;
 docker-compose ps
 ```
 
-**Expected Output:**
-```
-NAME                    IMAGE                           STATUS              PORTS
-api-gateway             docker-microservice-api-gateway  Up 2 minutes       0.0.0.0:9191->9191/tcp
-department-service      docker-microservice-department   Up 2 minutes       0.0.0.0:8081->8081/tcp
-mysql-db                mysql:8.0                       Up 2 minutes       0.0.0.0:3306->3306/tcp, 33060/tcp
-service-registry        docker-microservice-registry     Up 2 minutes       0.0.0.0:8761->8761/tcp
-user-service            docker-microservice-user         Up 2 minutes       0.0.0.0:8080->8080/tcp
-frontend                docker-microservice-frontend     Up 2 minutes       0.0.0.0:3000->3000/tcp
-```
+<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/ac21c23e-1a7a-4328-9e0f-b44677aee701" />
 
-![Docker Compose Services](./docs/screenshots/docker-compose-services.png)
 
 **View Logs:**
 ```bash
@@ -470,15 +432,6 @@ curl http://localhost:9191/users/1
   }
 }
 ```
-
-**Restart Department Service:**
-```bash
-docker-compose start department-service
-```
-
-![Circuit Breaker in Action](./docs/screenshots/circuit-breaker.png)
-
----
 
 ## ✅ Prerequisites
 
