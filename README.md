@@ -55,10 +55,10 @@ This project showcases a complete microservices ecosystem with the following key
          │                │
     ┌────┴────┐           │
     ▼         ▼           │
-┌─────────┐ ┌─────────┐  │
-│  User   │ │  Dept   │  │
-│ Service │─┤ Service │  │
-│ (8080)  │ │ (8081)  │──┘
+┌─────────┐ ┌─────────┐   │
+│  User   │ │  Dept   │   │
+│ Service │─┤ Service │   │
+│ (8080)  │ │ (8081)  │─ ─┘
 └────┬────┘ └────┬────┘
      │           │
      └─────┬─────┘
