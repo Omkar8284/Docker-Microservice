@@ -636,17 +636,11 @@ curl http://localhost:9191/users/actuator/health
 curl http://localhost:9191/departments/actuator/health
 ```
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is licensed under the MIT License.
 
 ## 👤 Author
 
-**Omkar Pawar**
+**Shivraj Jadhav**
+**Omkar kanase**
 
 - GitHub: [@Omkar8284](https://github.com/Omkar8284)
 
