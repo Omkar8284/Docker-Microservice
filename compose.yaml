@@ -99,7 +99,8 @@ networks:
     driver: bridge 
 
 volumes:
-  mysql-common-data: 
+  mysql-common-data: #persistent
+
 
 
 
