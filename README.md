@@ -518,7 +518,7 @@ curl http://localhost:9191/departments/actuator/health
 
 **Shivraj Jadhav**
 
-- GitHub: [@Omkar8284](https://github.com/shivrajJ15)
+- GitHub: [@shivrajJ15](https://github.com/shivrajJ15)
 
 **Omkar kanase**
 
